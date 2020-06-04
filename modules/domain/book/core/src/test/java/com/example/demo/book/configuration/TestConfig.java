@@ -1,5 +1,6 @@
-package com.example.demo.book;
+package com.example.demo.book.configuration;
 
+import com.example.demo.book.BookBasePackage;
 import com.example.demo.book.configuration.BookFlywayConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;

@@ -1,41 +1,33 @@
 package com.example.demo.book;
 
-import com.example.demo.common.TestOracleContainer;
-import org.junit.ClassRule;
+import com.example.demo.book.configuration.TestConfig;
+import com.example.demo.book.entity.Author;
+import com.example.demo.book.repository.AuthorRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.util.TestPropertyValues;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfig.class)
-@ActiveProfiles("tc")
-@ContextConfiguration(initializers = {UserRepositoryTCLiveTest.Initializer.class})
+@ActiveProfiles("test")
 public class UserRepositoryTCLiveTest  {
 
-    @ClassRule
-    public static TestOracleContainer oracleContainer = TestOracleContainer.getInstance();
+    @Autowired
+    protected AuthorRepository authorRepository;
 
     @Test
     @Transactional
-    public void givenUsersInDB_WhenUpdateStatusForNameModifyingQueryAnnotationNative_ThenModifyMatchingUsers() {
-
-    }
-
-    static class Initializer
-      implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            TestPropertyValues.of(
-              "spring.datasource.url=" + oracleContainer.getJdbcUrl(),
-              "spring.datasource.username=" + oracleContainer.getUsername(),
-              "spring.datasource.password=" + oracleContainer.getPassword()
-            ).applyTo(configurableApplicationContext.getEnvironment());
-        }
+    public void test() {
+        Author author = authorRepository.save(Author.builder().name("John").build());
+        Optional<Author> received = authorRepository.findById(author.getId());
+        assertThat(received.map(Author::getName).orElse(null)).isEqualTo(author.getName());
     }
 }

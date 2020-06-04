@@ -1,6 +1,7 @@
 package com.example.demo.book.configuration;
 
 
+import com.example.demo.book.BookBasePackage;
 import com.example.demo.common.DataSourceHelper;
 import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +12,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -21,16 +23,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+@Profile("xcvxcv")
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
         entityManagerFactoryRef = BookServiceDatasourceConfig.ENTITY_MANAGER_FACTORY_NAME,
         transactionManagerRef = BookServiceDatasourceConfig.TRANSACTION_MANAGER_NAME)
-@EnableConfigurationProperties(BookFlywayProperties.class)
+@EnableConfigurationProperties({BookFlywayProperties.class})
 @PropertySource("classpath:book.properties")
 public class BookServiceDatasourceConfig {
 
-    public static final String BASE_PACKAGE = BookServiceDatasourceConfig.class.getPackage().getName();
+    public static final String BASE_PACKAGE = BookBasePackage.class.getPackage().getName();
     public static final String DATASOURCE_NAME = "bookDataSource";
     public static final String ENTITY_MANAGER_FACTORY_NAME = "bookEntityManagerFactory";
     public static final String TRANSACTION_MANAGER_NAME = "bookTransactionManager";

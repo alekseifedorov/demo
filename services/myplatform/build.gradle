@@ -1,5 +1,7 @@
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-webflux')
+    compile project(':modules:domain:book:core')
+    testCompile 'com.h2database:h2'
 }
 
 test {

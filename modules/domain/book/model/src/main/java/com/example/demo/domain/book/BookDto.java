@@ -3,6 +3,6 @@ package com.example.demo.domain.book;
 import lombok.Data;
 
 @Data
-public class Book {
+public class BookDto {
 
 }
