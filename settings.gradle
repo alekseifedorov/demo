@@ -1,0 +1,9 @@
+rootProject.name = 'demo'
+
+include 'services:myplatform'
+
+include 'modules:domain:book:core'
+include 'modules:domain:book:model'
+include 'modules:domain:book:dao'
+include 'modules:common'
+

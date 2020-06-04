@@ -1,0 +1,51 @@
+buildscript {
+    ext {
+        encoding = 'UTF-8'
+        javaVersion = 1.8
+        springBootVersion = '2.3.0.RELEASE'
+    }
+}
+
+plugins {
+    id "io.spring.dependency-management" version "1.0.8.RELEASE"
+}
+
+subprojects {
+
+    group = 'com.example.demo'
+    version = '0.0.1-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        jcenter()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        }
+
+        dependencies {
+            dependency 'org.flywaydb:flyway-core:4.2.0'
+            dependency 'org.testcontainers:oracle-xe:1.14.3'
+            dependency 'com.oracle.database.jdbc:ojdbc8:18.3.0.0'
+        }
+    }
+
+    compileJava {
+        sourceCompatibility = "${javaVersion}"
+        targetCompatibility = "${javaVersion}"
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+        testCompile 'org.testcontainers:oracle-xe'
+        implementation 'com.oracle.database.jdbc:ojdbc8'
+    }
+}
+
