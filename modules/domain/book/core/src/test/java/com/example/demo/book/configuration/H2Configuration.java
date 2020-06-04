@@ -8,6 +8,7 @@ import com.example.demo.book.entity.Author;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -24,10 +25,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import static com.example.demo.book.configuration.BookServiceDatasourceConfig.PERSISTENCE_UNIT_NAME;
 
 
-//import com.zoetis.ngp.analysis.imputation.stub.repository.RawGenotype;
-
 @Configuration
-//@Profile("!test")
+@Profile("test")
 @EnableJpaRepositories(basePackages = {"com.example.demo", "com.example.demo.repository"}, entityManagerFactoryRef = "h2EntityManagerFactory", transactionManagerRef = "h2TransactionManager")
 @EnableTransactionManagement
 public class H2Configuration {
