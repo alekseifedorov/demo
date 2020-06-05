@@ -1,5 +1,18 @@
 dependencies {
+    compile project(':modules:common')
+    compile project(':modules:domain:book:model')
+    compile 'org.springframework:spring-context'
+    compile 'org.flywaydb:flyway-core'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.springframework.boot:spring-boot-starter-data-jpa'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'com.h2database:h2'
+    testCompile 'org.assertj:assertj-core'
+
+    compileOnly 'org.mapstruct:mapstruct-jdk8'
+    compile 'org.mapstruct:mapstruct-processor'
+    annotationProcessor 'org.mapstruct:mapstruct-processor'
 }
 
 test {

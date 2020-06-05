@@ -1,10 +1,13 @@
 package com.example.demo.book.repository;
 
-import com.example.demo.book.entity.Book;
+import com.example.demo.book.configuration.BookServiceDatasourceConfig;
+import com.example.demo.book.entity.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book, String> {
+@Transactional(transactionManager = BookServiceDatasourceConfig.TRANSACTION_MANAGER_NAME)
+public interface BookRepository extends JpaRepository<BookEntity, String> {
+
 }

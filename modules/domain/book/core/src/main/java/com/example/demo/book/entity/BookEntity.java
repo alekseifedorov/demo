@@ -1,8 +1,6 @@
 package com.example.demo.book.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,8 +8,12 @@ import javax.persistence.*;
 @Entity
 @Setter
 @Getter
+@Builder
 @AllArgsConstructor
-public class Book {
+@NoArgsConstructor
+@Table(name = "BOOK")
+public class BookEntity {
+
 
     @Id @Column(columnDefinition = "BINARY(16)")
     @GeneratedValue(generator = "uuid2")
@@ -21,6 +23,7 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Author authors;
+    @ManyToOne
+    @JoinColumn(name="author_id")
+    private AuthorEntity author;
 }

@@ -1,7 +1,7 @@
 package com.example.demo.book;
 
 import com.example.demo.book.configuration.TestConfig;
-import com.example.demo.book.entity.Author;
+import com.example.demo.book.entity.AuthorEntity;
 import com.example.demo.book.repository.AuthorRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +26,8 @@ public class UserRepositoryTCLiveTest  {
     @Test
     @Transactional
     public void test() {
-        Author author = authorRepository.save(Author.builder().name("John").build());
-        Optional<Author> received = authorRepository.findById(author.getId());
-        assertThat(received.map(Author::getName).orElse(null)).isEqualTo(author.getName());
+        AuthorEntity author = authorRepository.save(AuthorEntity.builder().name("John").build());
+        Optional<AuthorEntity> received = authorRepository.findById(author.getId());
+        assertThat(received.map(AuthorEntity::getName).orElse(null)).isEqualTo(author.getName());
     }
 }

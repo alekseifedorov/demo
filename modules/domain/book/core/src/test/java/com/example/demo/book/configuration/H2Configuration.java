@@ -4,7 +4,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 //import org.h2.tools.Server;
-import com.example.demo.book.entity.Author;
+import com.example.demo.book.entity.AuthorEntity;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,7 @@ import static com.example.demo.book.configuration.BookServiceDatasourceConfig.PE
 
 @Configuration
 @Profile("test")
-@EnableJpaRepositories(basePackages = {"com.example.demo", "com.example.demo.repository"}, entityManagerFactoryRef = "h2EntityManagerFactory", transactionManagerRef = "h2TransactionManager")
+@EnableJpaRepositories(basePackages = "com.example.demo.book.repository", entityManagerFactoryRef = "h2EntityManagerFactory", transactionManagerRef = "h2TransactionManager")
 @EnableTransactionManagement
 public class H2Configuration {
 
@@ -55,7 +55,7 @@ public class H2Configuration {
         entityManagerFactory.setPersistenceUnitName(PERSISTENCE_UNIT_NAME);
         entityManagerFactory.setDataSource(dataSource);
         entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter);
-        entityManagerFactory.setPackagesToScan(Author.class.getPackage().getName());
+        entityManagerFactory.setPackagesToScan(AuthorEntity.class.getPackage().getName());
         return entityManagerFactory;
     }
 

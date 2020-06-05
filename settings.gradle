@@ -1,8 +1,14 @@
 rootProject.name = 'demo'
 
+include 'api'
+
+include 'modules:common'
+
 include 'services:myplatform'
 
 include 'modules:domain:book:core'
 include 'modules:domain:book:model'
-include 'modules:common'
+
+include 'modules:composite-service:model'
+include 'modules:composite-service:core'
 

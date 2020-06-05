@@ -10,10 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -23,14 +20,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-@Profile("xcvxcv")
+@Profile("!test")
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
+        basePackages = "com.example.demo.book.repository",
         entityManagerFactoryRef = BookServiceDatasourceConfig.ENTITY_MANAGER_FACTORY_NAME,
         transactionManagerRef = BookServiceDatasourceConfig.TRANSACTION_MANAGER_NAME)
-@EnableConfigurationProperties({BookFlywayProperties.class})
-@PropertySource("classpath:book.properties")
+@EnableConfigurationProperties({BookFlywayProperties.class, JpaProperties.class})
+@PropertySource({"classpath:book.properties", "classpath:application.properties"})
 public class BookServiceDatasourceConfig {
 
     public static final String BASE_PACKAGE = BookBasePackage.class.getPackage().getName();
@@ -39,11 +37,12 @@ public class BookServiceDatasourceConfig {
     public static final String TRANSACTION_MANAGER_NAME = "bookTransactionManager";
     public static final String PERSISTENCE_UNIT_NAME = "bookPersistenceUnit";
     public static final String FLYWAY_BEAN_NAME = "bookFlyway";
-    public static final String DATASOURCE_PREFIX = "book.datasource";
+    public static final String DATASOURCE_PREFIX = "com.example.demo.book.datasource";
     public static final String ENTITY_MANAGER_FACTORY_BUILDER_NAME = "bookEntityManagerFactoryBuilder";
 
     @Bean(name = DATASOURCE_NAME)
     @ConfigurationProperties(prefix = DATASOURCE_PREFIX)
+    @Primary
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();
     }

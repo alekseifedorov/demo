@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 import static com.example.demo.book.configuration.BookServiceDatasourceConfig.DATASOURCE_NAME;
 
-@Profile("xcvxcv")
+@Profile("!test")
 @EnableConfigurationProperties({BookFlywayProperties.class})
 @PropertySource({"classpath:book.properties"})
 public class BookFlywayConfiguration {
