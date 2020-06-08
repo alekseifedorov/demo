@@ -1,4 +1,6 @@
 dependencies {
-    compile project(':api')
-    compile project(':modules:domain:book:model')
+    implementation project(':api')
+    implementation project(':domain-book-model')
+    implementation 'javax.validation:validation-api'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
 }

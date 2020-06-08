@@ -1,12 +1,10 @@
 package com.example.demo.domain.book.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
+@NoArgsConstructor
 public class Book {
 
     private String id;

@@ -1,7 +1,12 @@
 dependencies {
-    compile 'org.springframework:spring-context'
-    compile 'org.flywaydb:flyway-core'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'com.google.guava:guava'
+    implementation 'javax.validation:validation-api'
+    implementation 'org.springframework:spring-context'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'commons-validator:commons-validator'
     compileOnly 'org.springframework:spring-orm'
     compileOnly 'org.springframework.boot:spring-boot-starter'
-    compile 'org.testcontainers:oracle-xe'
+    implementation 'org.testcontainers:oracle-xe'
+    implementation 'org.glassfish.web:javax.el'
 }

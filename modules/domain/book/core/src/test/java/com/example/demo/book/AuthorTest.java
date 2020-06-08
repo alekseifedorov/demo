@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TestConfig.class)
 @ActiveProfiles("test")
-public class UserRepositoryTCLiveTest  {
+public class AuthorTest {
 
     @Autowired
     protected AuthorRepository authorRepository;
@@ -26,7 +26,7 @@ public class UserRepositoryTCLiveTest  {
     @Test
     @Transactional
     public void test() {
-        AuthorEntity author = authorRepository.save(AuthorEntity.builder().name("John").build());
+        AuthorEntity author = authorRepository.save(AuthorEntity.builder().name("Alekhandro").build());
         Optional<AuthorEntity> received = authorRepository.findById(author.getId());
         assertThat(received.map(AuthorEntity::getName).orElse(null)).isEqualTo(author.getName());
     }

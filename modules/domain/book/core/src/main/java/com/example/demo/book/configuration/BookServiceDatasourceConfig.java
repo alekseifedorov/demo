@@ -2,7 +2,7 @@ package com.example.demo.book.configuration;
 
 
 import com.example.demo.book.BookBasePackage;
-import com.example.demo.common.DataSourceHelper;
+import com.example.demo.common.datasource.DataSourceHelper;
 import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
@@ -64,13 +64,6 @@ public class BookServiceDatasourceConfig {
             @Qualifier(ENTITY_MANAGER_FACTORY_NAME) EntityManagerFactory entityManagerFactory
     ) {
         return new JpaTransactionManager(entityManagerFactory);
-    }
-
-    @Bean(name = FLYWAY_BEAN_NAME)
-    public Flyway flyway(BookFlywayProperties flywayProperties,
-                         @Qualifier(DATASOURCE_NAME) DataSource dataSource
-    ) {
-        return DataSourceHelper.defaultFlyway(flywayProperties, dataSource);
     }
 
     @Bean(name = ENTITY_MANAGER_FACTORY_BUILDER_NAME)

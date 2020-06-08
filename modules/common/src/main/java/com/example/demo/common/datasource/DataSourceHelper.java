@@ -1,4 +1,4 @@
-package com.example.demo.common;
+package com.example.demo.common.datasource;
 
 import org.flywaydb.core.Flyway;
 import org.springframework.boot.autoconfigure.flyway.FlywayProperties;

@@ -1,14 +1,23 @@
 rootProject.name = 'demo'
 
-include 'api'
+include ':api'
+project(':api').projectDir = "$rootDir/api" as File
 
-include 'modules:common'
+include ':common'
+project(':common').projectDir = "$rootDir/modules/common" as File
 
-include 'services:myplatform'
+include ':domain-book-core'
+project(':domain-book-core').projectDir = "$rootDir/modules/domain/book/core" as File
 
-include 'modules:domain:book:core'
-include 'modules:domain:book:model'
+include ':domain-book-model'
+project(':domain-book-model').projectDir = "$rootDir/modules/domain/book/model" as File
 
-include 'modules:composite-service:model'
-include 'modules:composite-service:core'
+include ':composite-service-model'
+project(':composite-service-model').projectDir = "$rootDir/modules/composite-service/model" as File
+
+include ':composite-service-core'
+project(':composite-service-core').projectDir = "$rootDir/modules/composite-service/core" as File
+
+include ':services-myplatform'
+project(':services-myplatform').projectDir = "$rootDir/services/myplatform" as File
 

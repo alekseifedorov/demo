@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-06-05T20:53:09+0300",
+    date = "2020-06-08T13:52:55+0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 @Component
@@ -25,7 +25,7 @@ public class BookMapperImpl implements BookMapper {
 
         BookEntity bookEntity = new BookEntity();
 
-        bookEntity.setId( book.getId() );
+        bookEntity.setId( stringToUUID( book.getId() ) );
         bookEntity.setTitle( book.getTitle() );
         bookEntity.setAuthor( toEntity( book.getAuthor() ) );
 
@@ -40,11 +40,25 @@ public class BookMapperImpl implements BookMapper {
 
         Book book = new Book();
 
-        book.setId( entity.getId() );
+        book.setId( uuidToString( entity.getId() ) );
         book.setTitle( entity.getTitle() );
         book.setAuthor( fromEntity( entity.getAuthor() ) );
 
         return book;
+    }
+
+    @Override
+    public Collection<Book> fromBookEntities(Collection<BookEntity> entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        Collection<Book> collection = new ArrayList<Book>( entity.size() );
+        for ( BookEntity bookEntity : entity ) {
+            collection.add( fromEntity( bookEntity ) );
+        }
+
+        return collection;
     }
 
     @Override
@@ -55,7 +69,7 @@ public class BookMapperImpl implements BookMapper {
 
         AuthorEntity authorEntity = new AuthorEntity();
 
-        authorEntity.setId( book.getId() );
+        authorEntity.setId( stringToUUID( book.getId() ) );
         authorEntity.setName( book.getName() );
         authorEntity.setBooks( bookCollectionToBookEntityCollection( book.getBooks() ) );
 
@@ -70,11 +84,24 @@ public class BookMapperImpl implements BookMapper {
 
         Author author = new Author();
 
-        author.setId( entity.getId() );
+        author.setId( uuidToString( entity.getId() ) );
         author.setName( entity.getName() );
-        author.setBooks( bookEntityCollectionToBookCollection( entity.getBooks() ) );
 
         return author;
+    }
+
+    @Override
+    public Collection<Author> fromAuthorEntities(Collection<AuthorEntity> entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        Collection<Author> collection = new ArrayList<Author>( entity.size() );
+        for ( AuthorEntity authorEntity : entity ) {
+            collection.add( fromEntity( authorEntity ) );
+        }
+
+        return collection;
     }
 
     protected Collection<BookEntity> bookCollectionToBookEntityCollection(Collection<Book> collection) {
@@ -85,19 +112,6 @@ public class BookMapperImpl implements BookMapper {
         Collection<BookEntity> collection1 = new ArrayList<BookEntity>( collection.size() );
         for ( Book book : collection ) {
             collection1.add( toEntity( book ) );
-        }
-
-        return collection1;
-    }
-
-    protected Collection<Book> bookEntityCollectionToBookCollection(Collection<BookEntity> collection) {
-        if ( collection == null ) {
-            return null;
-        }
-
-        Collection<Book> collection1 = new ArrayList<Book>( collection.size() );
-        for ( BookEntity bookEntity : collection ) {
-            collection1.add( fromEntity( bookEntity ) );
         }
 
         return collection1;

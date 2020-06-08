@@ -1,11 +1,11 @@
-CREATE TABLE author
+CREATE TABLE AUTHOR
   (
      id RAW(16) NOT NULL,
      name VARCHAR2(255) NOT NULL,
      CONSTRAINT "PK_author.id" PRIMARY KEY (id)
   );
 
-CREATE TABLE book
+CREATE TABLE BOOK
   (
      id        RAW(16) NOT NULL,
      title     VARCHAR2(255) NOT NULL,

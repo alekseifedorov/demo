@@ -4,6 +4,7 @@ buildscript {
         javaVersion = 1.8
         springBootVersion = '2.3.0.RELEASE'
         mapstructVersion = "1.3.1.Final"
+        springfoxVersion = "3.0.0-20190808.104142"
     }
 }
 
@@ -21,6 +22,7 @@ subprojects {
 
     repositories {
         jcenter()
+        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
     }
 
     dependencyManagement {
@@ -29,14 +31,31 @@ subprojects {
         }
 
         dependencies {
+            dependency 'org.apache.commons:commons-lang3:3.5'
+            dependency 'com.google.guava:guava:18.0'
+            dependency 'javax.validation:validation-api:2.0.1.Final'
+            dependency 'commons-validator:commons-validator:1.6'
             dependency 'org.flywaydb:flyway-core:4.2.0'
             dependency 'org.testcontainers:oracle-xe:1.14.3'
             dependency 'com.oracle.database.jdbc:ojdbc8:18.3.0.0'
             dependency 'com.h2database:h2:1.4.200'
             dependency 'org.assertj:assertj-core:3.6.2'
+
+            dependency 'org.hibernate:hibernate-validator:5.1.1.Final'
+            dependency 'org.glassfish.web:javax.el:2.2.4'
+            dependency 'javax.el:javax.el-api:2.2.4'
+
             dependency "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
             dependency "org.mapstruct:mapstruct-processor:${mapstructVersion}"
             dependency 'io.swagger:swagger-annotations:1.5.10'
+            dependency "io.springfox:springfox-swagger2:${springfoxVersion}-39"
+            dependency "io.springfox:springfox-swagger-ui:${springfoxVersion}-39"
+            dependency "io.springfox:springfox-swagger-common:${springfoxVersion}-39"
+            dependency "io.springfox:springfox-spring-webflux:${springfoxVersion}-31"
+            dependency "io.springfox:springfox-spi:${springfoxVersion}-39"
+            dependency "io.springfox:springfox-core:${springfoxVersion}-39"
+            dependency "io.springfox:springfox-schema:${springfoxVersion}-39"
+            dependency "io.springfox:springfox-spring-web:${springfoxVersion}-38"
         }
     }
 
@@ -51,9 +70,9 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok'
         testAnnotationProcessor 'org.projectlombok:lombok'
         implementation 'com.oracle.database.jdbc:ojdbc8'
-
+        implementation 'org.hibernate:hibernate-validator'
         compileOnly 'org.mapstruct:mapstruct-jdk8'
-        compile 'org.mapstruct:mapstruct-processor'
+        implementation 'org.mapstruct:mapstruct-processor'
         annotationProcessor 'org.mapstruct:mapstruct-processor'
     }
 }

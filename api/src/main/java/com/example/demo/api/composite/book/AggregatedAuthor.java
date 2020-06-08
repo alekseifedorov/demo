@@ -1,9 +1,6 @@
 package com.example.demo.api.composite.book;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Collection;
 
@@ -11,6 +8,8 @@ import java.util.Collection;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class AggregatedAuthor {
 
     private String id;

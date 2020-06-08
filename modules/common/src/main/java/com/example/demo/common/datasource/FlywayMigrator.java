@@ -1,4 +1,4 @@
-package com.example.demo.common;
+package com.example.demo.common.datasource;
 
 import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
@@ -32,12 +32,12 @@ public class FlywayMigrator {
     @PostConstruct
     public void init() {
         log.info("Migrator started. Properties are: [profiles={}, enabled={}].", environment.getActiveProfiles(), migrationProperties.isEnabled());
-        //if (environment.acceptsProfiles(Profiles.of(MIGRATION_PROFILE_NAME)) && migrationProperties.isEnabled()) {
+        if (environment.acceptsProfiles(Profiles.of(MIGRATION_PROFILE_NAME)) /*&& migrationProperties.isEnabled()*/) {
             log.info("Running migration.");
             flyway.migrate();
-//        } else {
-//            log.info("Migration disabled.");
-//        }
+        } else {
+            log.info("Migration disabled.");
+        }
     }
 
 }

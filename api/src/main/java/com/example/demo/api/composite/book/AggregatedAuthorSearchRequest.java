@@ -1,15 +1,14 @@
 package com.example.demo.api.composite.book;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Builder
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class AggregatedAuthorSearchRequest {
 
     private String id;
