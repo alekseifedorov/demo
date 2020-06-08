@@ -1,5 +1,7 @@
 package com.example.demo.common.validation;
 
+import com.example.demo.common.error.ErrorCode;
+import com.example.demo.common.exception.PlatformException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -19,7 +21,7 @@ public class AnnotationValidator<T> {
         Set<ConstraintViolation<T>> constraintViolations = validator.validate(target);
         if (!constraintViolations.isEmpty()) {
             String errorsStr = constraintViolations.stream().map(this::buildMessage).collect(Collectors.joining(", "));
-            throw new ValidationException(errorsStr);
+            throw new PlatformException(ErrorCode.ANNOTATION_VALIDATION_ERROR, errorsStr, null);
         }
     }
 

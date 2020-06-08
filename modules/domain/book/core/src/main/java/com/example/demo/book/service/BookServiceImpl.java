@@ -5,6 +5,7 @@ import com.example.demo.book.entity.BookEntity;
 import com.example.demo.book.mapping.BookMapper;
 import com.example.demo.book.repository.AuthorRepository;
 import com.example.demo.book.repository.BookRepository;
+import com.example.demo.book.validator.AuthorValidator;
 import com.example.demo.common.validation.AnnotationValidator;
 import com.example.demo.domain.book.BookService;
 import com.example.demo.domain.book.model.Author;
@@ -23,10 +24,13 @@ public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
     private final BookMapper mapper;
     private final AnnotationValidator<Object> annotationValidator;
+    private final AuthorValidator authorValidator;
 
     @Override
     public Author createAuthor(Author author) {
         annotationValidator.validate(author);
+        authorValidator.validate(author);
+
         AuthorEntity result = authorRepository.save(mapper.toEntity(author));
         return mapper.fromEntity(result);
     }
