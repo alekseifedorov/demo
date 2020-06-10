@@ -12,4 +12,8 @@ dependencies {
     implementation "io.springfox:springfox-swagger2"
     implementation "io.springfox:springfox-swagger-ui"
     implementation "io.springfox:springfox-spring-web"
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')
+    testImplementation('io.projectreactor:reactor-test')
 }

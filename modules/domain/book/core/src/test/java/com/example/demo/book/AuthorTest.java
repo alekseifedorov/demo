@@ -16,9 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,7 +31,7 @@ public class AuthorTest {
     public void test() {
         for (int i = 0; i < 20; i++) {
             Author author = bookService.createAuthor(Author.builder().name("Ale").build());
-            bookService.createBook(Book.builder().author(author).title("Title1").build());
+            bookService.createBook(Book.builder().author(Author.builder().id(author.getId()).build()).title("Title1").build());
         }
 
         Page<Author> result = bookService.searchAuthors(AuthorSearchRequest.builder().name("Ale").pageRequest(new PageRequest(1, 2)).build());

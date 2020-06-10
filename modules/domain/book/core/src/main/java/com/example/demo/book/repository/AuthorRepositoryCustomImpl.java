@@ -48,7 +48,7 @@ public class AuthorRepositoryCustomImpl implements AuthorRepositoryCustom {
         cq.where(predicates.toArray(new Predicate[0]));
 
         PageRequest pageRequest = request.getPageRequest();
-        pageRequest.getSort().forEach(
+        Optional.ofNullable(pageRequest.getSort()).orElse(Collections.emptyList()).forEach(
                 sort -> cq.orderBy(sort.isAscending() ? cb.asc(author.get(sort.getProperty())) : cb.desc(author.get(sort.getProperty())))
         );
         TypedQuery<AuthorEntity> query = entityManager.createQuery(cq);
