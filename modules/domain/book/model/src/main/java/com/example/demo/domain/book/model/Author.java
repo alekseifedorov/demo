@@ -1,15 +1,15 @@
 package com.example.demo.domain.book.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 
+@Builder
 @Setter
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Author {
 

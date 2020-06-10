@@ -1,7 +1,6 @@
-package com.example.demo.api.composite.book;
+package com.example.demo.domain.book.model;
 
 import com.example.demo.api.paging.PageRequest;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 @Builder
@@ -10,11 +9,10 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class AggregatedAuthorSearchRequest {
+public class AuthorSearchRequest {
 
     private String id;
 
-    @ApiModelProperty("Name for search")
     private String name;
 
     private PageRequest pageRequest;

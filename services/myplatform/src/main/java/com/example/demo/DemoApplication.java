@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Import;
-import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableSwagger2WebFlux
+@EnableSwagger2
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {
 		DataSourceAutoConfiguration.class,

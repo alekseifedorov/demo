@@ -4,7 +4,8 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -24,6 +25,6 @@ public class AuthorEntity {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "author")
-    private Collection<BookEntity> books;
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<BookEntity> books;
 }

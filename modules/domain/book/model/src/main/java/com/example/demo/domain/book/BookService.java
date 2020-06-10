@@ -1,10 +1,10 @@
 package com.example.demo.domain.book;
 
 
+import com.example.demo.api.paging.Page;
 import com.example.demo.domain.book.model.Author;
+import com.example.demo.domain.book.model.AuthorSearchRequest;
 import com.example.demo.domain.book.model.Book;
-
-import java.util.Collection;
 
 
 public interface BookService {
@@ -13,5 +13,5 @@ public interface BookService {
 
     Book createBook(Book book);
 
-    Collection<Author> searchAuthors(String name);
+    Page<Author> searchAuthors(AuthorSearchRequest request);
 }
