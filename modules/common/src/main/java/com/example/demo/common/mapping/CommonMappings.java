@@ -2,7 +2,6 @@ package com.example.demo.common.mapping;
 
 import java.util.UUID;
 
-@SuppressWarnings({"InterfaceNeverImplemented", "unused"})
 public interface CommonMappings {
 
     default String uuidToString(UUID uuid) {

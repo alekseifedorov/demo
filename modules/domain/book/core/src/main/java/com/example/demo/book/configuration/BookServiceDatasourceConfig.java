@@ -28,7 +28,7 @@ import javax.sql.DataSource;
         entityManagerFactoryRef = BookServiceDatasourceConfig.ENTITY_MANAGER_FACTORY_NAME,
         transactionManagerRef = BookServiceDatasourceConfig.TRANSACTION_MANAGER_NAME)
 @EnableConfigurationProperties({BookFlywayProperties.class, JpaProperties.class})
-@PropertySource({"classpath:book.properties", "classpath:application.properties"})
+@PropertySource({"classpath:application.properties", "classpath:book.properties"})
 public class BookServiceDatasourceConfig {
 
     public static final String BASE_PACKAGE = BookBasePackage.class.getPackage().getName();

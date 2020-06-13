@@ -36,6 +36,9 @@ allprojects {
         }
 
         dependencies {
+            dependency('org.springframework.cloud:spring-cloud-starter-stream-kafka:3.0.5.RELEASE')
+            dependency('org.springframework.cloud:spring-cloud-stream-test-support:3.0.5.RELEASE')
+
             dependency 'org.apache.commons:commons-lang3:3.5'
             dependency 'com.google.guava:guava:18.0'
             dependency 'javax.validation:validation-api:2.0.1.Final'
