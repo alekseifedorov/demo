@@ -1,7 +1,7 @@
 package com.example.demo.book.configuration;
 
 import com.example.demo.book.BookBasePackage;
-import com.example.demo.common.CommonServicesConfiguration;
+import com.example.demo.common.configuration.CommonServicesConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;

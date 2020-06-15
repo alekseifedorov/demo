@@ -1,4 +1,4 @@
-package com.example.demo.common;
+package com.example.demo.common.configuration;
 
 import com.example.demo.api.ApiBasePackage;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -9,6 +9,7 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
+@SwaggerProfile
 public class SwaggerConfiguration {
 
     @Bean

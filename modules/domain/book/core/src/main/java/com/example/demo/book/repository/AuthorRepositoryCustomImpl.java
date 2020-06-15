@@ -17,7 +17,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
-import java.awt.image.SampleModel;
 import java.util.*;
 
 @Transactional(transactionManager = BookServiceDatasourceConfig.TRANSACTION_MANAGER_NAME)

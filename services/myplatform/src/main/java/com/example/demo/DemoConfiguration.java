@@ -4,7 +4,7 @@ package com.example.demo;
 import com.example.demo.api.composite.book.configuration.CompositeServiceConfiguration;
 import com.example.demo.book.configuration.BookConfiguration;
 import com.example.demo.book.configuration.BookFlywayConfiguration;
-import com.example.demo.common.CommonServicesConfiguration;
+import com.example.demo.common.configuration.CommonServicesConfiguration;
 import org.springframework.context.annotation.Import;
 
 @Import({

@@ -1,6 +1,14 @@
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'io.springfox:springfox-swagger2'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'io.swagger:swagger-annotations'
     implementation 'org.springframework.data:spring-data-commons'
+
+    implementation("io.springfox:springfox-swagger2")
+    implementation("io.springfox:springfox-swagger-ui")
+    implementation("io.springfox:springfox-swagger-common")
+    implementation("io.springfox:springfox-spring-webflux")
+    implementation("io.springfox:springfox-spi")
+    implementation("io.springfox:springfox-core")
+    implementation("io.springfox:springfox-schema")
+    implementation("io.springfox:springfox-spring-web")
 }
