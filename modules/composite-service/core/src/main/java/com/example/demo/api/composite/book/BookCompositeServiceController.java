@@ -18,23 +18,23 @@ public class BookCompositeServiceController implements BookCompositeService {
     private final AggregatedBookMapper mapper;
 
     @Override
-    public Mono<AggregatedBook> addBook(AggregatedBook aggregated) {
+    public AggregatedBook addBook(AggregatedBook aggregated) {
         Book input = mapper.fromAggregated(aggregated);
         Book created = bookService.createBook(input);
-        return Mono.just(mapper.toAggregated(created));
+        return mapper.toAggregated(created);
     }
 
     @Override
-    public Mono<AggregatedAuthor> addAuthor(AggregatedAuthor aggregated) {
+    public AggregatedAuthor addAuthor(AggregatedAuthor aggregated) {
         Author input = mapper.fromAggregated(aggregated);
         Author created = bookService.createAuthor(input);
-        return Mono.just(mapper.toAggregated(created));
+        return mapper.toAggregated(created);
     }
 
     @Override
-    public Mono<Page<AggregatedAuthor>> searchAuthors(AggregatedAuthorSearchRequest aggregated) {
+    public Page<AggregatedAuthor> searchAuthors(AggregatedAuthorSearchRequest aggregated) {
         AuthorSearchRequest request = mapper.fromAggregated(aggregated);
         Page<Author> result = bookService.searchAuthors(request);
-        return Mono.just(mapper.toAggregatedAuthors(result));
+        return mapper.toAggregatedAuthors(result);
     }
 }

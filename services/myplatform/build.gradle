@@ -8,7 +8,6 @@ dependencies {
     implementation project(':domain-book-core')
     implementation project(':domain-book-model')
     implementation('org.springframework.boot:spring-boot-starter-webflux')
-    implementation('io.springfox:springfox-swagger2')
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('org.springframework.cloud:spring-cloud-stream-test-support')

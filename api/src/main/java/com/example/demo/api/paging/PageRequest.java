@@ -1,11 +1,8 @@
 package com.example.demo.api.paging;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static java.util.Objects.isNull;
@@ -15,20 +12,16 @@ import static java.util.Objects.isNull;
 @Getter
 @Setter
 @ToString
-@ApiModel(description = "Paging info")
 public class PageRequest {
 
     private static final int DEFAULT_PAGE_NUMBER = 0;
     private static final int DEFAULT_PAGE_SIZE = 100;
     private static final Direction DEFAULT_DIRECTION = Direction.ASC;
 
-    @ApiModelProperty("Page number")
     private int page = DEFAULT_PAGE_NUMBER;
 
-    @ApiModelProperty("Page size")
     private int size = DEFAULT_PAGE_SIZE;
 
-    @ApiModelProperty("Sorting order")
     private List<Sorting> sort;
 
     public PageRequest(int size) {
