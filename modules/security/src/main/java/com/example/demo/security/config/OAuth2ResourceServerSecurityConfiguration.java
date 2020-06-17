@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -38,7 +39,8 @@ import java.util.Map;
 import static org.springframework.http.HttpMethod.*;
 
 @EnableWebFluxSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableReactiveMethodSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 @ComponentScan(basePackageClasses = SecurityBasePackage.class)
 //@Profile("oauth")
 public class OAuth2ResourceServerSecurityConfiguration {

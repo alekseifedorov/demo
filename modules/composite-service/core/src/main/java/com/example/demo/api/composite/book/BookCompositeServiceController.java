@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 import java.security.Principal;
 
@@ -35,10 +36,10 @@ public class BookCompositeServiceController implements BookCompositeService {
     }
 
     @Override
-    public Page<AggregatedAuthor> searchAuthors(AggregatedAuthorSearchRequest aggregated) {
+    public Mono<Page<AggregatedAuthor>> searchAuthors(AggregatedAuthorSearchRequest aggregated) {
         AuthorSearchRequest request = mapper.fromAggregated(aggregated);
         Page<Author> result = bookService.searchAuthors(request);
-        return mapper.toAggregatedAuthors(result);
+        return Mono.just(mapper.toAggregatedAuthors(result));
     }
 
     @Override

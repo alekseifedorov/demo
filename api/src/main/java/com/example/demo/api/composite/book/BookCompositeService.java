@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.security.Principal;
 
@@ -30,7 +31,7 @@ public interface BookCompositeService {
             value = "/search-authors",
             consumes = "application/json")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    Page<AggregatedAuthor> searchAuthors(@RequestBody AggregatedAuthorSearchRequest request);
+    Mono<Page<AggregatedAuthor>> searchAuthors(@RequestBody AggregatedAuthorSearchRequest request);
 
     @GetMapping("/public/message")
     ResponseEntity<String> publicMessage();
