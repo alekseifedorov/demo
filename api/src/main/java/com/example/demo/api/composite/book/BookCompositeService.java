@@ -29,6 +29,7 @@ public interface BookCompositeService {
     @PostMapping(
             value = "/search-authors",
             consumes = "application/json")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     Page<AggregatedAuthor> searchAuthors(@RequestBody AggregatedAuthorSearchRequest request);
 
     @GetMapping("/public/message")
@@ -36,9 +37,9 @@ public interface BookCompositeService {
 
     @GetMapping("/employee/message")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    ResponseEntity<String> employeeMessage(Principal principal);
+    ResponseEntity<String> employeeMessage();
 
     @GetMapping("/admin/message")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    ResponseEntity<String> adminMessage(Principal principal);
+    ResponseEntity<String> adminMessage();
 }

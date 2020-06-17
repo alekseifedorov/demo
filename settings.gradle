@@ -15,9 +15,6 @@ project(':domain-book-core').projectDir = "$rootDir/modules/domain/book/core" as
 include ':domain-book-model'
 project(':domain-book-model').projectDir = "$rootDir/modules/domain/book/model" as File
 
-include ':composite-service-model'
-project(':composite-service-model').projectDir = "$rootDir/modules/composite-service/model" as File
-
 include ':composite-service-core'
 project(':composite-service-core').projectDir = "$rootDir/modules/composite-service/core" as File
 
