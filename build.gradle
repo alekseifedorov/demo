@@ -36,7 +36,7 @@ allprojects {
         }
 
         dependencies {
-            dependency('org.springframework.boot:spring-boot-starter-webflux:2.3.1.RELEASE')
+            dependency("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
             dependency('org.springframework.cloud:spring-cloud-starter-stream-kafka:3.0.5.RELEASE')
             dependency('org.springframework.cloud:spring-cloud-stream-test-support:3.0.5.RELEASE')
 
@@ -54,9 +54,13 @@ allprojects {
             dependency "org.mapstruct:mapstruct-jdk8:${mapstructVersion}"
             dependency "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
-            dependency "org.springdoc:springdoc-openapi-webflux-ui:1.2.32"
+            dependency "org.springdoc:springdoc-openapi-ui:1.2.32"
 
+            dependency "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+            dependency "org.springframework.boot:spring-boot-starter-oauth2-resource-server:${springBootVersion}"
+            dependency "org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.1.RELEASE"
         }
+
     }
 
     compileJava {

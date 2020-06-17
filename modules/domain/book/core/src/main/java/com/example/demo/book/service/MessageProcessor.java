@@ -8,10 +8,10 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 
-@EnableBinding(Sink.class)
+//@EnableBinding(Sink.class)
 public class MessageProcessor {
 
-    @StreamListener(target = Sink.INPUT)
+ //   @StreamListener(target = Sink.INPUT)
     public void process(Event<String, Book> event) {
 
         switch (event.getEventType()) {

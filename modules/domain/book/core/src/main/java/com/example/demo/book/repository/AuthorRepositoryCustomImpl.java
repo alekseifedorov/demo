@@ -44,7 +44,10 @@ public class AuthorRepositoryCustomImpl implements AuthorRepositoryCustom {
         if (Strings.isNotBlank(request.getName())) {
             predicates.add(cb.like(author.get("name"), request.getName() + '%'));
         }
-        cq.where(predicates.toArray(new Predicate[0]));
+
+        if (!predicates.isEmpty()) {
+            cq.where(predicates.toArray(new Predicate[0]));
+        }
 
         PageRequest pageRequest = request.getPageRequest();
         Optional.ofNullable(pageRequest.getSort()).orElse(Collections.emptyList()).forEach(

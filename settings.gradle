@@ -6,6 +6,9 @@ project(':api').projectDir = "$rootDir/api" as File
 include ':common'
 project(':common').projectDir = "$rootDir/modules/common" as File
 
+include ':security'
+project(':security').projectDir = "$rootDir/modules/security" as File
+
 include ':domain-book-core'
 project(':domain-book-core').projectDir = "$rootDir/modules/domain/book/core" as File
 
@@ -20,4 +23,5 @@ project(':composite-service-core').projectDir = "$rootDir/modules/composite-serv
 
 include ':services-myplatform'
 project(':services-myplatform').projectDir = "$rootDir/services/myplatform" as File
+
 

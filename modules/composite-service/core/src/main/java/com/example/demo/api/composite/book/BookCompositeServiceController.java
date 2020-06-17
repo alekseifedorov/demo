@@ -7,8 +7,11 @@ import com.example.demo.domain.book.model.Author;
 import com.example.demo.domain.book.model.AuthorSearchRequest;
 import com.example.demo.domain.book.model.Book;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
+
+import java.security.Principal;
 
 @RestController
 @AllArgsConstructor
@@ -36,5 +39,20 @@ public class BookCompositeServiceController implements BookCompositeService {
         AuthorSearchRequest request = mapper.fromAggregated(aggregated);
         Page<Author> result = bookService.searchAuthors(request);
         return mapper.toAggregatedAuthors(result);
+    }
+
+    @Override
+    public ResponseEntity<String> adminMessage(Principal principal) {
+        return ResponseEntity.ok("Employee or Admin message for " + principal.getName());
+    }
+
+    @Override
+    public ResponseEntity<String> employeeMessage(Principal principal) {
+        return ResponseEntity.ok("Employee message for " + principal.getName());
+    }
+
+    @Override
+    public ResponseEntity<String> publicMessage() {
+        return ResponseEntity.ok("Public message");
     }
 }

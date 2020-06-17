@@ -10,5 +10,5 @@ dependencies {
     implementation 'org.flywaydb:flyway-core'
     implementation 'commons-validator:commons-validator'
     compileOnly 'org.springframework:spring-orm'
-    compileOnly 'org.springframework.boot:spring-boot-starter-webflux'
+    compileOnly 'org.springframework.boot:spring-boot-starter-web'
 }
