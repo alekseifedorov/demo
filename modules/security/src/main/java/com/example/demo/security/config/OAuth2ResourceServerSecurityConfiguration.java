@@ -22,30 +22,32 @@ import java.util.Collections;
 @Profile("oauth")
 public class OAuth2ResourceServerSecurityConfiguration extends ResourceServerConfigurerAdapter {
 
-  private final ResourceServerProperties resource;
+    private final ResourceServerProperties resource;
 
-  public OAuth2ResourceServerSecurityConfiguration(ResourceServerProperties resource) {
-    this.resource = resource;
-  }
+    public OAuth2ResourceServerSecurityConfiguration(ResourceServerProperties resource) {
+        this.resource = resource;
+    }
 
-  @Override
-  public void configure(HttpSecurity http) throws Exception {
-    http.cors();
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.cors();
 
-    http.csrf().disable();
+        http.csrf().disable();
 
-    http.authorizeRequests()
-        .antMatchers("/api/**")
-        .permitAll()
-        .anyRequest()
-        .authenticated();
-  }
+        http.authorizeRequests()
+            .antMatchers("/actuator/**")
+            .permitAll()
+            .antMatchers("/api/**")
+            .permitAll()
+            .anyRequest()
+            .authenticated();
+    }
 
-  @Bean
-  public TokenStore jwkTokenStore() {
-    return new JwkTokenStore(
-        Collections.singletonList(resource.getJwk().getKeySetUri()),
-        new CognitoAccessTokenConverter(),
-        null);
-  }
+    @Bean
+    public TokenStore jwkTokenStore() {
+        return new JwkTokenStore(
+                Collections.singletonList(resource.getJwk().getKeySetUri()),
+                new CognitoAccessTokenConverter(),
+                null);
+    }
 }

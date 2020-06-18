@@ -7,12 +7,13 @@ import com.example.demo.domain.book.model.Author;
 import com.example.demo.domain.book.model.AuthorSearchRequest;
 import com.example.demo.domain.book.model.Book;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 
+@Slf4j
 @RestController
 @AllArgsConstructor
 public class BookCompositeServiceController implements BookCompositeService {
@@ -22,6 +23,7 @@ public class BookCompositeServiceController implements BookCompositeService {
 
     @Override
     public AggregatedBook addBook(AggregatedBook aggregated) {
+        log.trace("Add book");
         Book input = mapper.fromAggregated(aggregated);
         Book created = bookService.createBook(input);
         return mapper.toAggregated(created);
@@ -53,6 +55,7 @@ public class BookCompositeServiceController implements BookCompositeService {
 
     @Override
     public ResponseEntity<String> publicMessage() {
+        log.trace("Public message");
         return ResponseEntity.ok("Public message");
     }
 }

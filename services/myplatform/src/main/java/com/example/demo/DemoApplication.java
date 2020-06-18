@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.boot.Banner;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration;
@@ -20,7 +21,8 @@ import org.springframework.web.filter.CorsFilter;
 		DataSourceAutoConfiguration.class,
 		FlywayAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class,
-		SecurityAutoConfiguration.class
+		SecurityAutoConfiguration.class,
+		ManagementWebSecurityAutoConfiguration.class
 })
 @Import(DemoConfiguration.class)
 public class DemoApplication {
