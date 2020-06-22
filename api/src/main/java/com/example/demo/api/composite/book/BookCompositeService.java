@@ -35,10 +35,10 @@ public interface BookCompositeService {
     ResponseEntity<String> publicMessage();
 
     @GetMapping("/employee/message")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     ResponseEntity<String> employeeMessage(Principal principal);
 
     @GetMapping("/admin/message")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     ResponseEntity<String> adminMessage(Principal principal);
 }

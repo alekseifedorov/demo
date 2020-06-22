@@ -45,17 +45,17 @@ public class BookCompositeServiceController implements BookCompositeService {
 
     @Override
     public ResponseEntity<String> adminMessage(Principal principal) {
-        return ResponseEntity.ok("Employee or Admin message for " + principal.getName());
+        return ResponseEntity.ok("Employee or Admin message for " /*+ principal.getName()*/);
     }
 
     @Override
     public ResponseEntity<String> employeeMessage(Principal principal) {
-        return ResponseEntity.ok("Employee message for " + principal.getName());
+        return ResponseEntity.ok("Employee message for " /*+ principal.getName()*/);
     }
 
     @Override
     public ResponseEntity<String> publicMessage() {
-        log.trace("Public message");
+        log.info("Public message");
         return ResponseEntity.ok("Public message");
     }
 }

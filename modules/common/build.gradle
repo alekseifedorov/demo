@@ -9,6 +9,11 @@ dependencies {
     implementation 'org.springframework:spring-context'
     implementation 'org.flywaydb:flyway-core'
     implementation 'commons-validator:commons-validator'
+
+    // fluentd
+    implementation 'org.komamitsu:fluency:1.8.1'
+    implementation 'com.sndyuk:logback-more-appenders:1.5.0'
+
     compileOnly 'org.springframework:spring-orm'
     compileOnly 'org.springframework.boot:spring-boot-starter-web'
 }
