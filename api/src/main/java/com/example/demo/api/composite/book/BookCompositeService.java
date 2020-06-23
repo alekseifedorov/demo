@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
+@CrossOrigin
 @Tag(name = "Book composite service", description = "REST API for books.")
 @RequestMapping("/api")
 public interface BookCompositeService {
