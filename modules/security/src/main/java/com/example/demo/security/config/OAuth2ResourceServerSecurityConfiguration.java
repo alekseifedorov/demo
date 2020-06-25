@@ -36,8 +36,8 @@ public class OAuth2ResourceServerSecurityConfiguration extends ResourceServerCon
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
-
         http.csrf().disable();
+        http.cors();
 
         http.authorizeRequests()
             .antMatchers("/actuator/**")
@@ -46,8 +46,6 @@ public class OAuth2ResourceServerSecurityConfiguration extends ResourceServerCon
             .permitAll()
             .anyRequest()
             .authenticated();
-
-       http.cors();
     }
 
     @Bean
@@ -70,7 +68,7 @@ public class OAuth2ResourceServerSecurityConfiguration extends ResourceServerCon
         config.addAllowedMethod("POST");
         config.addAllowedMethod("PUT");
         config.addAllowedMethod("DELETE");
-        config.setAllowedOrigins(Arrays.asList("*"));
+      //  config.setAllowedOrigins(Arrays.asList("*"));
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
