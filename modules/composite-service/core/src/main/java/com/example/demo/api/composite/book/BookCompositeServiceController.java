@@ -34,6 +34,7 @@ public class BookCompositeServiceController implements BookCompositeService {
 
     @Override
     public AggregatedAuthor addAuthor(AggregatedAuthor aggregated) {
+        log.debug("Add author");
         Author input = mapper.fromAggregated(aggregated);
         Author created = bookService.createAuthor(input);
         return mapper.toAggregated(created);
@@ -44,21 +45,5 @@ public class BookCompositeServiceController implements BookCompositeService {
         AuthorSearchRequest request = mapper.fromAggregated(aggregated);
         Page<Author> result = bookService.searchAuthors(request);
         return mapper.toAggregatedAuthors(result);
-    }
-
-    @Override
-    public ResponseEntity<String> adminMessage(Principal principal) {
-        return ResponseEntity.ok("Employee or Admin message for " /*+ principal.getName()*/);
-    }
-
-    @Override
-    public ResponseEntity<String> employeeMessage(Principal principal) {
-        return ResponseEntity.ok("Employee message for " /*+ principal.getName()*/);
-    }
-
-    @Override
-    public ResponseEntity<String> publicMessage() {
-        log.info("Public message");
-        return ResponseEntity.ok("Public message");
     }
 }

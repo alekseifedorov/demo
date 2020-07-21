@@ -1,8 +1,8 @@
 package com.example.demo.book.entity;
 
 import lombok.*;
-import oracle.ons.Publisher;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.integration.annotation.Publisher;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -16,11 +16,8 @@ import java.util.UUID;
 @Table(name = "BOOK")
 public class BookEntity {
 
-
     @Id
-    @Column(columnDefinition = "BINARY(16)")
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @GeneratedValue
     private UUID id;
 
     @Column(nullable = false)

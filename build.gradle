@@ -2,7 +2,7 @@ buildscript {
     ext {
         encoding = 'UTF-8'
         javaVersion = 1.8
-        springBootVersion = '2.3.0.RELEASE'
+        springBootVersion = '2.3.1.RELEASE'
         mapstructVersion = "1.3.1.Final"
     }
 
@@ -45,7 +45,6 @@ allprojects {
             dependency 'javax.validation:validation-api:2.0.1.Final'
             dependency 'commons-validator:commons-validator:1.6'
             dependency 'org.flywaydb:flyway-core:4.2.0'
-            dependency 'com.oracle.database.jdbc:ojdbc8:18.3.0.0'
             dependency 'com.h2database:h2:1.4.200'
             dependency 'org.assertj:assertj-core:3.6.2'
 
@@ -73,10 +72,11 @@ allprojects {
         testCompileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         testAnnotationProcessor 'org.projectlombok:lombok'
-        implementation 'com.oracle.database.jdbc:ojdbc8'
         implementation 'org.hibernate:hibernate-validator'
         compileOnly 'org.mapstruct:mapstruct-jdk8'
         implementation 'org.mapstruct:mapstruct-processor'
         annotationProcessor 'org.mapstruct:mapstruct-processor'
+        testImplementation 'org.testcontainers:testcontainers:1.14.3'
+        testImplementation 'org.testcontainers:postgresql:1.14.3'
     }
 }

@@ -15,7 +15,6 @@ import javax.sql.DataSource;
 
 import static com.example.demo.book.configuration.BookServiceDatasourceConfig.DATASOURCE_NAME;
 
-@Profile("!test")
 @EnableConfigurationProperties({MigrationProperties.class, BookFlywayProperties.class})
 @PropertySource({"classpath:book.properties"})
 public class BookFlywayConfiguration {

@@ -56,7 +56,7 @@ public class OAuth2ResourceServerSecurityConfiguration extends ResourceServerCon
                 null);
     }
 
-    @Bean // Note
+    @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();

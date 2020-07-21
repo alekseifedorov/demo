@@ -16,7 +16,6 @@ public class CognitoAccessTokenConverter extends JwtAccessTokenConverter {
   @SuppressWarnings("unchecked")
   @Override
   public OAuth2Authentication extractAuthentication(Map<String, ?> claims) {
-
     if (claims.containsKey(COGNITO_GROUPS))
       ((Map<String, Object>) claims).put(SPRING_AUTHORITIES, claims.get(COGNITO_GROUPS));
     if (claims.containsKey(COGNITO_USERNAME))

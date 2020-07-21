@@ -17,9 +17,8 @@ import java.util.UUID;
 @Table(name = "AUTHOR")
 public class AuthorEntity {
 
-    @Id @Column(columnDefinition = "BINARY(16)")
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Id
+    @GeneratedValue
     private UUID id;
 
     @Column(nullable = false)
