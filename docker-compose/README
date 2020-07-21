@@ -1,0 +1,5 @@
+To create and run containers:
+docker-compose up -d
+
+To delete all containers and resources:
+docker-compose down
